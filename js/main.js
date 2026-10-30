@@ -1,6 +1,5 @@
 (function () {
   var root = document.documentElement;
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* Day / dusk theme */
   var themeBtn = document.getElementById('theme-btn');
@@ -13,7 +12,7 @@
     themeIcon.textContent = dusk ? '☾' : '☀';
     themeLabel.textContent = dusk ? 'dusk' : 'day';
     var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', dusk ? '#2a2347' : '#fbf1dc');
+    if (meta) meta.setAttribute('content', dusk ? '#231d3f' : '#fffaf0');
   }
   function toggleTheme() {
     if (root.dataset.theme === 'dusk') delete root.dataset.theme;
@@ -22,47 +21,36 @@
     renderTheme();
   }
   themeBtn.addEventListener('click', toggleTheme);
-  var sun = document.getElementById('sun');
-  sun.addEventListener('click', toggleTheme);
+  document.getElementById('sun').addEventListener('click', toggleTheme);
   renderTheme();
 
-  /* Music: never autoplays; plays a user-supplied track at assets/audio/bgm.mp3 */
-  var audio = document.getElementById('bgm');
-  var musicBtn = document.getElementById('music-btn');
-  var musicLabel = document.getElementById('music-label');
-  var missing = false;
-  audio.volume = 0.4;
-  function setMusic(on) {
-    musicBtn.setAttribute('aria-pressed', String(on));
-    musicBtn.setAttribute('aria-label', on ? 'Pause background music' : 'Play background music');
-    musicLabel.textContent = on ? 'playing' : 'music';
-  }
-  audio.addEventListener('error', function () {
-    missing = true;
-    setMusic(false);
-    musicLabel.textContent = 'no track yet';
-    musicBtn.disabled = true;
+  /* Rider easter egg: click to zoom across the desert */
+  var rider = document.getElementById('rider');
+  var zoomTimer;
+  rider.addEventListener('click', function () {
+    rider.classList.remove('zoom');
+    void rider.offsetWidth;
+    rider.classList.add('zoom');
+    clearTimeout(zoomTimer);
+    zoomTimer = setTimeout(function () { rider.classList.remove('zoom'); }, 2400);
   });
-  musicBtn.addEventListener('click', function () {
-    if (missing) return;
-    if (audio.paused) {
-      audio.play().then(function () { setMusic(true); }).catch(function () { setMusic(false); });
-    } else {
-      audio.pause();
-      setMusic(false);
-    }
-  });
+
+  /* Hairline under the nav once the page scrolls */
+  var nav = document.getElementById('nav');
+  function markNav() { nav.classList.toggle('stuck', window.scrollY > 8); }
+  window.addEventListener('scroll', markNav, { passive: true });
+  markNav();
 
   /* Project filters */
   var chips = document.querySelectorAll('.chip-btn');
-  var cards = document.querySelectorAll('#cards .card');
+  var rows = document.querySelectorAll('#cards .row');
   var emptyNote = document.getElementById('empty-note');
   function applyFilter(f, updateUrl) {
     var shown = 0;
     chips.forEach(function (c) { c.setAttribute('aria-pressed', String(c.dataset.filter === f)); });
-    cards.forEach(function (card) {
-      var show = f === 'all' || card.dataset.cat === f;
-      card.hidden = !show;
+    rows.forEach(function (row) {
+      var show = f === 'all' || row.dataset.cat === f;
+      row.hidden = !show;
       if (show) shown++;
     });
     emptyNote.hidden = shown > 0;
@@ -93,35 +81,4 @@
       done('Copy isn’t available here, the address is above.');
     }
   });
-
-  /* Parallax on the hero layers */
-  if (!reduceMotion) {
-    var layers = Array.prototype.slice.call(document.querySelectorAll('.layer'));
-    var ticking = false;
-    var update = function () {
-      var y = Math.min(window.scrollY, window.innerHeight * 1.2);
-      layers.forEach(function (l) {
-        var s = parseFloat(l.dataset.speed) || 0;
-        if (s) l.style.transform = 'translate3d(0,' + (y * s).toFixed(1) + 'px,0)';
-      });
-      ticking = false;
-    };
-    window.addEventListener('scroll', function () {
-      if (!ticking) { ticking = true; requestAnimationFrame(update); }
-    }, { passive: true });
-  }
-
-  /* Reveal on scroll */
-  var targets = document.querySelectorAll('.section .wrap > *, .card, .trail li');
-  targets.forEach(function (t) { t.classList.add('reveal'); });
-  if ('IntersectionObserver' in window && !reduceMotion) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.12 });
-    targets.forEach(function (t) { io.observe(t); });
-  } else {
-    targets.forEach(function (t) { t.classList.add('in'); });
-  }
 })();
