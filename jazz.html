@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jazz Bubbles · Michael Chen</title>
+  <meta name="theme-color" content="#fbf1dc">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="A prototype: Brazilian jazz clustered into bubbles. Hover to hear a 30-second preview.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23f4a640' stroke='%232b2118' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/jazz.css">
+  <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+</head>
+<body class="jazz-page">
+  <header class="nav">
+    <a class="logo" href="index.html" aria-label="Michael Chen, home">mc.</a>
+    <nav aria-label="Main">
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="nav-tools">
+      <a class="tool" href="index.html">← Back Home</a>
+    </div>
+  </header>
+
+  <main class="jazz-main">
+    <div class="wrap">
+      <p class="kicker">A prototype</p>
+      <h1 class="jazz-title">Jazz Bubbles</h1>
+      <p class="lead">Brazilian jazz, clustered by feel. Hover a bubble (or tap it) to hear a 30-second preview.</p>
+
+      <div class="jazz-controls">
+        <button class="btn primary" type="button" id="start-btn">Turn On Sound</button>
+        <p class="jazz-hint" id="hint">Browsers need one click before audio can play on hover.</p>
+      </div>
+
+      <div class="stage" id="stage" role="group" aria-label="Songs grouped into four clusters">
+        <p class="stage-loading" id="loading">Gathering the bubbles…</p>
+      </div>
+
+      <div class="now" id="now" role="status" aria-live="polite">
+        <p class="now-empty">Nothing playing yet.</p>
+      </div>
+
+      <p class="credit">Previews and artwork come from the Apple Music (iTunes) Search API. This is a work in progress, and the song list is a sketch.</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 Michael Chen · <a href="index.html">Back to the desert</a></p>
+  </footer>
+
+  <audio id="player" preload="none"></audio>
+  <script src="js/jazz.js"></script>
+</body>
+</html>

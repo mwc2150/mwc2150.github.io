@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Michael Chen · Data science, AI, and long walks in the desert</title>
+  <meta name="theme-color" content="#fbf1dc">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Michael Chen’s portfolio: data science and applied AI projects, from marketing analytics to agentic systems.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23f4a640' stroke='%232b2118' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+</head>
+<body>
+  <a class="skip" href="#projects">Skip to projects</a>
+
+  <header class="nav">
+    <a class="logo" href="#top" aria-label="Michael Chen, home">mc.</a>
+    <nav aria-label="Main">
+      <a href="#projects">Projects</a>
+      <a href="#journey">Journey</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-tools">
+      <button class="tool" id="music-btn" type="button" aria-pressed="false" aria-label="Play background music">
+        <span aria-hidden="true">♪</span> <span id="music-label">music</span>
+      </button>
+      <button class="tool" id="theme-btn" type="button" aria-pressed="false" aria-label="Switch to dusk">
+        <span aria-hidden="true" id="theme-icon">☀</span> <span id="theme-label">day</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO: layered desert -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="scene" aria-hidden="true">
+        <svg class="layer" data-speed="0" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMax slice">
+          <rect width="1440" height="800" class="sky1"/>
+          <rect y="300" width="1440" height="500" class="sky2"/>
+          <rect y="420" width="1440" height="380" class="sky3"/>
+        </svg>
+        <svg class="layer" data-speed="0.35" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMax slice">
+          <circle id="sun" class="sun" cx="1050" cy="330" r="92"/>
+          <g class="birds" fill="none" stroke-width="3" stroke-linecap="round">
+            <path class="bird b1" d="M640 170 q14 -16 28 0 q14 -16 28 0"/>
+            <path class="bird b2" d="M730 130 q10 -12 20 0 q10 -12 20 0"/>
+            <path class="bird b3" d="M580 120 q8 -10 16 0 q8 -10 16 0"/>
+          </g>
+        </svg>
+        <svg class="layer" data-speed="0.28" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMax slice">
+          <path class="mesa" d="M0 560 L0 500 L90 500 L120 462 L300 462 L330 500 L520 500 L560 530 L560 560 Z"/>
+          <path class="mesa" d="M820 560 L840 520 L900 520 L930 470 L1100 470 L1135 520 L1250 520 L1280 548 L1440 548 L1440 560 Z"/>
+        </svg>
+        <svg class="layer" data-speed="0.2" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMax slice">
+          <path class="dune d1" d="M0 590 C200 530 400 575 620 548 S1000 500 1200 548 S1380 570 1440 548 L1440 800 L0 800 Z"/>
+          <g class="bike"><g transform="translate(1050 540) scale(1.7) translate(-1050 -540)">
+            <path class="bike-trail" d="M1010 536 q-60 4 -150 -8"/>
+            <path class="bike-body" d="M1010 540 l26 -14 l52 0 l22 14 z"/>
+            <circle class="rider-head" cx="1050" cy="502" r="9"/>
+            <path class="rider-cloak" d="M1042 510 l16 0 l12 22 l-40 0 z"/>
+          </g></g>
+        </svg>
+        <svg class="layer" data-speed="0.1" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMax slice">
+          <path class="dune d2" d="M0 665 C260 605 520 675 760 635 S1200 595 1440 655 L1440 800 L0 800 Z"/>
+        </svg>
+        <svg class="layer" data-speed="0" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMax slice">
+          <path class="dune d3" d="M0 735 C300 695 600 755 900 715 S1300 705 1440 735 L1440 800 L0 800 Z"/>
+        </svg>
+      </div>
+
+      <div class="hero-copy">
+        <p class="hello">Hi there, I’m</p>
+        <h1 id="hero-title">Michael Chen</h1>
+        <p class="tagline">I turn messy data into stories worth acting on, and I’d like you to have a good time looking around.</p>
+        <p class="hero-cta">
+          <a class="btn primary" href="#projects">See What I’ve Built</a>
+          <a class="btn" href="#contact">Say Hello</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects" aria-labelledby="projects-title">
+      <div class="wrap">
+        <p class="kicker">Things I’ve made</p>
+        <h2 id="projects-title">Projects</h2>
+        <p class="lead">Marketing analytics, forecasting, and AI agents. Pick a trail:</p>
+
+        <div class="filters" role="group" aria-label="Filter projects">
+          <button type="button" class="chip-btn" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="chip-btn" data-filter="personal" aria-pressed="false">Personal</button>
+          <button type="button" class="chip-btn" data-filter="coursework" aria-pressed="false">Coursework</button>
+          <button type="button" class="chip-btn" data-filter="progress" aria-pressed="false">In progress</button>
+        </div>
+
+        <ul class="cards" id="cards">
+          <li class="card c-teal" data-cat="progress">
+            <p class="tags"><span class="tag t-progress">In progress</span><span class="tag">Capstone with Rational AI</span></p>
+            <h3>Qual2Cast</h3>
+            <p>Under the founder of Rational AI (formerly Head of AI at Two Sigma PE), I’m building an explainable model that forecasts three-year revenue growth for private companies from LLM-extracted signals like loan distress, new contracts, and hiring. Built for private-equity investors.</p>
+            <p class="stack">LLM extraction · Forecasting · Explainability</p>
+          </li>
+
+          <li class="card c-terra" data-cat="progress">
+            <p class="tags"><span class="tag t-progress">In progress</span><span class="tag">Capstone with Merck</span></p>
+            <h3>PharmAgentics</h3>
+            <p>Under a Merck senior data scientist, I’m building an agentic AI system that automates the weekly brand-performance report end to end: data pull, anomaly detection, an LLM-drafted performance narrative, and flagged actions.</p>
+            <p class="stack">Agentic AI · Pharma commercial analytics · LLMs</p>
+            <a class="card-link" href="https://github.com/mwc2150/PharmAgentics">View on GitHub <span aria-hidden="true">→</span></a>
+          </li>
+
+          <li class="card c-mustard" data-cat="personal">
+            <p class="tags"><span class="tag">Personal</span></p>
+            <h3>Everlane Sustainability Analysis</h3>
+            <p>Does a brand’s sustainability messaging match what people actually say? I pulled about 47K lines from Reddit, Everlane.com, and news archives, ran sentiment and entity analysis, and compared the brand’s voice with public discourse.</p>
+            <p class="stack">PRAW · Selenium · GDELT · BERT · Streamlit</p>
+            <a class="card-link" href="https://github.com/mwc2150/everlane-sustainability-analysis">View on GitHub <span aria-hidden="true">→</span></a>
+          </li>
+
+          <li class="card c-sky" data-cat="personal">
+            <p class="tags"><span class="tag">Personal</span><span class="tag">Startup work</span></p>
+            <h3>Sephora Review Analysis</h3>
+            <p>From my startup Rexi Self-Care: XGBoost and LightGBM models on 926K Sephora reviews across 8,494 products. Minority-class recall went from near zero to 64%, and product reputation turned out to matter more than skin type.</p>
+            <p class="stack">XGBoost · LightGBM · Feature importance</p>
+            <a class="card-link" href="https://github.com/mwc2150/sephora-marketing-analysis">View on GitHub <span aria-hidden="true">→</span></a>
+          </li>
+
+          <li class="card c-rose" data-cat="coursework">
+            <p class="tags"><span class="tag t-course">Coursework</span></p>
+            <h3>Marketing Mix Model: From Spend to a Defensible Reallocation Memo</h3>
+            <p>A homework-turned-keeper: a marketing mix model for a made-up product called GLUCOREN, using adstock and saturation with OLS, ROI ranges, and geo-lift calibration, ending in a budget reallocation memo.</p>
+            <p class="stack">Adstock · Saturation · OLS · Geo-lift</p>
+            <a class="card-link" href="https://github.com/mwc2150/MMM-From-Spend-to-a-Defensible-Reallocation-Memo">View on GitHub <span aria-hidden="true">→</span></a>
+          </li>
+        </ul>
+        <p class="note" id="empty-note" hidden>Nothing on this trail yet.</p>
+      </div>
+    </section>
+
+    <!-- JOURNEY -->
+    <section class="section alt" id="journey" aria-labelledby="journey-title">
+      <div class="wrap">
+        <p class="kicker">The road so far</p>
+        <h2 id="journey-title">Journey</h2>
+        <ol class="trail">
+          <li><span class="when">Fall 2026</span><div><h3>Two capstones at Columbia</h3><p>An industry capstone on forecasting private-company growth, and an applied AI capstone on an agent that writes a weekly brand-performance briefing for pharma teams.</p></div></li>
+          <li><span class="when">2025 – 2026</span><div><h3>MS in Data Science, Columbia</h3><p>Finishing December 2026. Professional Development &amp; Leadership Fellow and a DSI Student Council member. Projects on LLM memory compression and AI infrastructure trends along the way.</p></div></li>
+          <li><span class="when">2024 – 2025</span><div><h3>Co-founded Rexi Self-Care</h3><p>A holistic wellness startup in Los Angeles. I was the data analyst: ML on Sephora reviews, pricing models, and a checkout redesign that raised conversion 17%.</p></div></li>
+          <li><span class="when">2022 – 2025</span><div><h3>USC</h3><p>BAs in Data Science and in International Relations (Global Business). Renaissance Scholar and NAE Grand Challenges Scholar.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="wrap about">
+        <div>
+          <p class="kicker">A little about me</p>
+          <h2 id="about-title">About</h2>
+          <p>I like the moment when a pile of numbers (or a pile of Reddit threads) turns into a clear answer someone can act on. That’s why I mix data science with business context: machine learning, statistics, and a lot of writing it up so people can follow along.</p>
+          <p>Lately I’ve been digging into applied AI: LLM agents, evaluating LLM output, and forecasting from messy qualitative data. I also like building small web things like this one.</p>
+          <p>Away from the keyboard, I’m usually listening to <a href="jazz.html">jazz</a>, especially the Brazilian kind. Come wander through the <a href="jazz.html">jazz bubbles</a> and hover to hear a few of my favorites.</p>
+        </div>
+        <div>
+          <h3 class="toolkit-title">Toolkit</h3>
+          <ul class="toolkit">
+            <li>Python</li><li>SQL</li><li>R</li><li>PyTorch</li><li>XGBoost</li><li>HuggingFace</li><li>LangChain</li><li>Anthropic API</li><li>Streamlit</li><li>Tableau</li><li>Power BI</li><li>GCP</li><li>AWS</li><li>Git</li><li>Claude Code</li><li>Figma</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section alt" id="contact" aria-labelledby="contact-title">
+      <div class="wrap contact">
+        <p class="kicker">Come say hi</p>
+        <h2 id="contact-title">Contact</h2>
+        <p class="lead">Hiring, collaborating, or just want to swap project ideas? I’d love to hear from you.</p>
+        <p class="hero-cta">
+          <a class="btn primary" href="mailto:mwc2150@columbia.edu">mwc2150@columbia.edu</a>
+          <button class="btn" type="button" id="copy-btn">Copy Email</button>
+          <span class="copy-status" id="copy-status" role="status" aria-live="polite"></span>
+        </p>
+        <p class="links">
+          <a href="https://www.linkedin.com/in/michaelwangchen">LinkedIn</a>
+          <a href="https://github.com/mwc2150">GitHub</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 Michael Chen. Built by hand with a little help from Claude Code. Desert inspired by a certain game.</p>
+  </footer>
+
+  <audio id="bgm" loop preload="none" src="assets/audio/bgm.mp3"></audio>
+  <script src="js/main.js"></script>
+</body>
+</html>
